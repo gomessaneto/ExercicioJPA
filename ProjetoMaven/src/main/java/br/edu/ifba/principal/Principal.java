@@ -3,10 +3,10 @@ package br.edu.ifba.principal;
 
 import java.util.List;
 
-import com.mysql.cj.xdevapi.Client;
 
 import br.edu.ifba.basicas.Categoria;
 import br.edu.ifba.basicas.Cliente;
+import br.edu.ifba.basicas.Endereco;
 import br.edu.ifba.dao.GetEntityManager;
 import jakarta.persistence.EntityManager;
 
@@ -25,19 +25,36 @@ public class Principal {
 //		
 //		em.getTransaction().commit();
 		
-	/*	Cliente c = new Cliente();
+		Cliente c = new Cliente();
+//		
+//		c.setNome("Sicrano");
+//		c.setCpf("0568953");
+//		c.setRg("956233254");
+//		c.setCategoria(em.find(Categoria.class, 1));
+//		
+		Endereco e = new Endereco();
+//		
+		e.setBairro("Tal");
+		e.setCep("48562-000");
+		e.setCidade("Lá longe");
+		e.setEstado("Bahia");
+		e.setNumero("200");
+		e.setRua("Lá");
+//		
+//		c.setEndereco(e);
 		
-		c.setNome("Coisinha");
-		c.setCpf("0023547");
-		c.setRg("98765412");
-		c.setCategoria(em.find(Categoria.class, 1));
+		c = em.find(Cliente.class, 2);
+		
+		c.setEndereco(e);
+		
 		
 		em.getTransaction().begin();
 		
-		em.persist(c);
+		em.merge(c);
 		
-		em.getTransaction().commit();*/
+		em.getTransaction().commit();
 
+//		System.out.println(c);
 		
 		
 		List<Cliente> list = em.createQuery("select c from Cliente c",Cliente.class).getResultList();

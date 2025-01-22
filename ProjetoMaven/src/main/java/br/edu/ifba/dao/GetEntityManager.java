@@ -8,14 +8,20 @@ public class GetEntityManager {
 	
 	private static final String JPA = "aula-jpa";
 	private static EntityManagerFactory emf;
+	private static EntityManager em;
 	
 	public static EntityManager getConnectionJpa() {
 		
-		emf = Persistence.createEntityManagerFactory(JPA);
-		EntityManager em = emf.createEntityManager();
-		
-		return em;
-		
+		if(emf == null) {
+			emf = Persistence.createEntityManagerFactory(JPA);
+			em = emf.createEntityManager();
+			
+			return em;
+
+		}else {
+			return em;
+		}
+				
 	}
 	
 

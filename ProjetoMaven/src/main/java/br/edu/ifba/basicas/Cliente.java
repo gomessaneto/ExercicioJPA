@@ -2,12 +2,14 @@ package br.edu.ifba.basicas;
 
 import java.io.Serializable;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToOne;
 
 @Entity
 public class Cliente implements Serializable {
@@ -25,6 +27,7 @@ public class Cliente implements Serializable {
 	private String cpf;
 	private String rg;
 	
+	@OneToOne(cascade = CascadeType.ALL)
 	private Endereco endereco;
 	
 	@ManyToOne
@@ -41,6 +44,16 @@ public class Cliente implements Serializable {
 	}
 	
 	public Cliente() {}
+
+	
+	
+	public Endereco getEndereco() {
+		return endereco;
+	}
+
+	public void setEndereco(Endereco endereco) {
+		this.endereco = endereco;
+	}
 
 	public int getId() {
 		return id;
@@ -84,9 +97,10 @@ public class Cliente implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Cliente [id=" + id + ", nome=" + nome + ", cpf=" + cpf + ", rg=" + rg + ", categoria=" + categoria.getDescricao()
-				+ "]";
+		return "Cliente [id=" + id + ", nome=" + nome + ", cpf=" + cpf + ", rg=" + rg + ", endereco=" + endereco.getRua()
+				+ ", categoria=" + categoria.getDescricao() + "]";
 	}
+
 	
 	
 
