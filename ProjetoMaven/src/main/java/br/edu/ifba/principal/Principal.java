@@ -7,6 +7,10 @@ import java.util.List;
 import br.edu.ifba.basicas.Categoria;
 import br.edu.ifba.basicas.Cliente;
 import br.edu.ifba.basicas.Endereco;
+import br.edu.ifba.basicas.ItensProduto;
+import br.edu.ifba.basicas.Produto;
+import br.edu.ifba.basicas.Venda;
+import br.edu.ifba.dao.ClienteDao;
 import br.edu.ifba.dao.GetEntityManager;
 import jakarta.persistence.EntityManager;
 
@@ -27,39 +31,84 @@ public class Principal {
 		
 		Cliente c = new Cliente();
 //		
-//		c.setNome("Sicrano");
-//		c.setCpf("0568953");
-//		c.setRg("956233254");
-//		c.setCategoria(em.find(Categoria.class, 1));
+//		c.setNome("Fulano");
+//		c.setCpf("021545");
+//		c.setRg("00235458");
+//		c.setCategoria(em.find(Categoria.class, 2));
+
 //		
 		Endereco e = new Endereco();
 //		
-		e.setBairro("Tal");
-		e.setCep("48562-000");
-		e.setCidade("Lá longe");
-		e.setEstado("Bahia");
-		e.setNumero("200");
-		e.setRua("Lá");
+//		e.setBairro("TTTT");
+//		e.setCep("485623-000");
+//		e.setCidade("FUIIII");
+//		e.setEstado("Bahia");
+//		e.setNumero("333");
+//		e.setRua("TESTE");
 //		
 //		c.setEndereco(e);
 		
-		c = em.find(Cliente.class, 2);
-		
-		c.setEndereco(e);
-		
-		
-		em.getTransaction().begin();
-		
-		em.merge(c);
-		
-		em.getTransaction().commit();
+//		c = em.find(Cliente.class, 2);
+//		
+//		c.setEndereco(e);
+//		
+//		
+//		em.getTransaction().begin();
+//		
+//		em.merge(c);
+//		
+//		em.getTransaction().commit();
 
 //		System.out.println(c);
+//		
+//		Produto p = new Produto("Notebook",5,1500);
+//		
+//		em.getTransaction().begin();
+//		
+//		em.persist(p);
+//		
+//		em.getTransaction().commit();
+//		
+//		Venda v = new Venda();
+//		
+//		v.setCliente(c);
+//		v.setDescrica("Venda notebook");
+//		
+//		
+//		em.getTransaction().begin();
+//		
+//		em.persist(v);
+//		
+//		em.getTransaction().commit();
+//		
+//		ItensProduto ip = new ItensProduto();
+//		
+//		
+//		ip.setVenda(em.find(Venda.class, 1));
+//		ip.setProduto(em.find(Produto.class, 1));
+//		ip.setQuantidade(2);
 		
 		
-		List<Cliente> list = em.createQuery("select c from Cliente c",Cliente.class).getResultList();
+//		em.getTransaction().begin();
+//		
+//		em.persist(ip);
+//		
+//		em.getTransaction().commit();
 		
-		list.forEach(System.out::println);
+		ClienteDao cd = new ClienteDao();
+		
+//		cd.adicionarCliente(c);
+		
+		cd.listarClientes().forEach(System.out::println);
+		
+		System.out.println("======= Clientes da categoria 1 ========");
+		cd.clienteCategoria(2).forEach(System.out::println);;
+		
+		
+		
+//		List<Cliente> list = em.createQuery("select c from Cliente c",Cliente.class).getResultList();
+//		
+//		list.forEach(System.out::println);
 
 	}
 
