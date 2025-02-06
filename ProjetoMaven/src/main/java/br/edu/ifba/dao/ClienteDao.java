@@ -56,16 +56,8 @@ public class ClienteDao {
 		TypedQuery<Cliente> query = em.createQuery("select c from Cliente c",Cliente.class);
 		query.setMaxResults(qtd);
 		
-		return query.getResultList();				
-	}
-	
-	public List<Cliente> clienteCategoria(int id) {
-		
-		TypedQuery<Cliente> query = em.createQuery("select c from Cliente c join c.categoria where c.categoria.id = :id",Cliente.class);
-		query.setParameter("id", id);
 		return query.getResultList();
 	}
-	
-	
+
 
 }

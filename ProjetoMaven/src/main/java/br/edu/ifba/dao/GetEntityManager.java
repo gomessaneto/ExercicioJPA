@@ -6,7 +6,7 @@ import jakarta.persistence.Persistence;
 
 public class GetEntityManager {
 	
-	private static final String JPA = "aula-jpa";
+	private static final String JPA = "exerciciojpa";
 	private static EntityManagerFactory emf;
 	private static EntityManager em;
 	

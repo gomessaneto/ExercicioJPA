@@ -10,49 +10,41 @@ import jakarta.persistence.OneToOne;
 
 @Entity
 public class Endereco implements Serializable {
-	
-	
-	
-	/**
-	 * 
-	 */
+
+
 	private static final long serialVersionUID = 1L;
-	
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
+	private int Enderecoid;
 	
 	private String cep;
 	private String rua;
 	private String numero;
 	private String bairro;
 	private String cidade;
-	private String estado;
 	
 	@OneToOne(mappedBy ="endereco")
 	private Cliente cliente;
 
-	public Endereco(String cep, String rua, String numero, String bairro, String cidade, String estado,
-			Cliente cliente) {
+	public Endereco(String cep, String rua, String numero, String bairro, String cidade, Cliente cliente) {
 		super();
 		this.cep = cep;
 		this.rua = rua;
 		this.numero = numero;
 		this.bairro = bairro;
 		this.cidade = cidade;
-		this.estado = estado;
 		this.cliente = cliente;
 	}
 	
 	public Endereco() {}
 
-	public int getId() {
-		return id;
+	public int getEnderecoId() {
+		return Enderecoid;
 	}
 
-	public void setId(int id) {
-		this.id = id;
+	public void setEnderecoId(int Enderecoid) {
+		this.Enderecoid = Enderecoid;
 	}
 
 	public String getCep() {
@@ -95,14 +87,6 @@ public class Endereco implements Serializable {
 		this.cidade = cidade;
 	}
 
-	public String getEstado() {
-		return estado;
-	}
-
-	public void setEstado(String estado) {
-		this.estado = estado;
-	}
-
 	public Cliente getCliente() {
 		return cliente;
 	}
@@ -113,10 +97,9 @@ public class Endereco implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Endereco [id=" + id + ", cep=" + cep + ", rua=" + rua + ", numero=" + numero + ", bairro=" + bairro
-				+ ", cidade=" + cidade + ", estado=" + estado + ", cliente=" + cliente + "]";
+		return "Endereco [id do Endereco=" + Enderecoid + ", cep=" + cep + ", rua=" + rua + ", numero=" + numero + ", bairro=" + bairro
+				+ ", cidade=" + cidade + ", cliente=" + cliente + "]";
 	}
-	
-	
+
 
 }
